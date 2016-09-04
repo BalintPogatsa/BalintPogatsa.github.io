@@ -1,2 +1,4 @@
 name: Balint Pogatsa
 markdown: kramdown
+gems:
+  - jekyll-sitemap
