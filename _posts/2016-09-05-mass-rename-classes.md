@@ -97,8 +97,45 @@ Replace with: $1$2ViewModel$3
    Select all files and open Multi-Rename Tool (Ctrl+M)
    
 ```
-Search for: (\.*)VM.cs
-Replace with: $1ViewModel.cs
+Search for: (\.*)VM(\.cs)
+Replace with: $1ViewModel$2
 ```
     
    ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_class.png "Rename files")
+   
+2. Replace postfix of WPF controls
+In this case I will search for "V" postfix and replace it with "View"
+
+- Renaming all occurences in code and references in project files 
+   
+   Notepad++ - Find in Files tool (Ctrl+Shift+F).
+   File filters (*V.xaml *V.xaml.cs)
+   
+```
+Find what: ([\W+])([A-Z]\w+)V([\W+])
+Replace with: $1$2View$3
+```
+
+   ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_postfixed_wpf_control.png "Replace class names in source code")
+   
+   For project files (*.csproj)
+
+```
+Find what: ([\W+])([A-Z]\w+)V(\.xaml\W+)
+Replace with: $1$2View$3
+```
+
+   ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_postfixed_class.png "Replace file references in project files")
+   
+   - Renaming files
+   
+   Total Commander - Find files tool (Ctrl+F) with *V.xaml* filter - Feed to listbox
+   
+   Select all files and open Multi-Rename Tool (Ctrl+M)
+   
+```
+Search for: (\.*)V(\.xaml(\.cs)*)
+Replace with: $1View$2
+```
+    
+   ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_wpf_control.png "Rename files")   
