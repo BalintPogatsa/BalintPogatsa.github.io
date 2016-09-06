@@ -67,3 +67,20 @@ ul.posts li {
     margin: 0 auto 60px;
     width: 90%; */
 }
+
+.post p {
+    margin: 0 0 30px;
+}
+
+.post h2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.post pre {
+	margin: 0 0 20px;
+}
+
+.post p img {
+	max-width: 100%;
+}

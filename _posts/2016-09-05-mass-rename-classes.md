@@ -42,7 +42,7 @@ If you first click "Find All", you can review what changes you will make.
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_prefixed_class.png "Replace class names in source code")
    
-Repeat quite similarly for project files (*.csproj).
+<span class="step">2</span>Repeat quite similarly for project files (*.csproj).
 
     Find what: ([\W+])[Cc]([A-Z]\w+\.cs)([\W+])
     
@@ -50,9 +50,7 @@ Repeat quite similarly for project files (*.csproj).
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_prefixed_class.png "Replace file references in project files")
    
-<span class="step">2</span>Renaming files
-   
-Use Find Files tool of Total Commander to list all the files that you need to rename and click "Feed to listbox" button:
+<span class="step">3</span>To rename files, first in Total Commander use Find Files tool to list all the files that you need to rename and click "Feed to listbox" button:
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step2_mass_rename_prefixed_class.png "Find files to rename")
    
@@ -72,10 +70,8 @@ You can also preview the changes to be sure you rename everything as you planned
 The steps are pretty similar to removing prefixes so I will just show the steps you need.
 In my case I will search for "VM" postfix and replace it with "ViewModel".
 
-- Renaming all occurences in code and references in project files
-   
-Notepad++ - Find in Files tool (Ctrl+Shift+F).
-Then set file filters to "*VM.cs".
+<span class="step">1</span>To rename all occurences in code, go to Notepad++ - Find in Files tool (Ctrl+Shift+F).
+Then set file filters to "*VM.cs" and replace occurences.
    
     Find what: ([\W+])([A-Z]\w+)VM([\W+])
     
@@ -83,7 +79,7 @@ Then set file filters to "*VM.cs".
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_postfixed_class.png "Replace class names in source code")
    
-For project files set file filters to (*.csproj)
+<span class="step">2</span>For project files set file filters to "*.csproj" and replace.
 
     Find what: ([\W+])([A-Z]\w+)VM(\.cs[\W+])
     
@@ -91,9 +87,7 @@ For project files set file filters to (*.csproj)
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_postfixed_class.png "Replace file references in project files")
    
-- Renaming files
-   
-Total Commander - Find files tool (Ctrl+F) with "*VM.cs" filter - Feed to listbox.
+<span class="step">3</span>To rename files open Total Commander - Find files tool (Ctrl+F) with "*VM.cs" filter - Feed to listbox.
 Then select all files and open Multi-Rename Tool (Ctrl+M).
    
     Search for: (\.*)VM(\.cs)
@@ -103,11 +97,9 @@ Then select all files and open Multi-Rename Tool (Ctrl+M).
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_class.png "Rename files")
    
 ## Change postfix of WPF controls
-In this case I will search for "V" postfix and replace it with "View"
+In this case I will search for "V" postfix and replace it with "View".
 
-- Renaming all occurences in code and references in project files 
-   
-Notepad++ - Find in Files tool (Ctrl+Shift+F), and set file filters to "*V.xaml *V.xaml.cs".
+<span class="step">1</span>To rename all occurences in code open Notepad++ - Find in Files tool (Ctrl+Shift+F), set file filters to "*V.xaml *V.xaml.cs" and replace occurences.
    
     Find what: ([\W+])([A-Z]\w+)V([\W+])
     
@@ -115,7 +107,7 @@ Notepad++ - Find in Files tool (Ctrl+Shift+F), and set file filters to "*V.xaml 
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_postfixed_wpf_control.png "Replace class names in source code")
    
-For project files set file filters to "*.csproj".
+<span class="step">2</span>For project files set file filters to "*.csproj".
 
     Find what: ([\W+])([A-Z]\w+)V(\.xaml\W+)
     
@@ -123,9 +115,7 @@ For project files set file filters to "*.csproj".
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_postfixed_class.png "Replace file references in project files")
    
-- Renaming files
-   
-Total Commander - Find files tool (Ctrl+F) with "*V.xaml*" filter, then click "Feed listbox" button. After that select all files and open Multi-Rename Tool (Ctrl+M).
+<span class="step">3</span>To rename files, open Total Commander - Find files tool (Ctrl+F) with "*V.xaml*" filter, then click "Feed to listbox" button. After that select all files and open Multi-Rename Tool (Ctrl+M).
    
     Search for: (\.*)V(\.xaml(\.cs)*)
     
