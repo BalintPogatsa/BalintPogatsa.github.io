@@ -30,10 +30,8 @@ I will describe 3 different cases:
   * Change postfix of WPF controls (i.e. FirstV.xaml and FirstV.xaml.cs)
 
 ## Removing prefix from class names
-<span class="step">1</span>Renaming all occurences in code and references in project files 
-   
-In Notepad++ press Ctrl+Shift+F to open Find in Files tool.
-In the opened dialog choose your project directory, set Regular expression as search mode, set file filters (c*.cs) and specify the regular expression.
+<span class="step">1</span>To rename all occurences in code, open Notepad++, press Ctrl+Shift+F to open Find in Files tool.
+In the opened dialog choose your project directory, choose "Regular expression" as search mode, set file filters to "c*.cs" and specify your RegExp.
 If you first click "Find All", you can review what changes you will make.
 
 
