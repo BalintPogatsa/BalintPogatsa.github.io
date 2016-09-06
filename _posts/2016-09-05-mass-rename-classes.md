@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mass rename class names in your project
+title: Mass rename classes in your project
 date: 2016-09-05
 ---
 
