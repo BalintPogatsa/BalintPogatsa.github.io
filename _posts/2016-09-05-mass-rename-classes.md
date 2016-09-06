@@ -24,6 +24,7 @@ Besides that you can use [Notepad++](https://notepad-plus-plus.org/) to rename t
 With these two tools you can easily fix all those naming problems.
 
 I will describe 3 different cases:
+
   * Removing prefix from class names (i.e. cOldPrefixedClass.cs)
   * Change postfix of class names (i.e. FirstVM.cs)
   * Change postfix of WPF controls (i.e. FirstV.xaml and FirstV.xaml.cs)
@@ -36,6 +37,7 @@ In the opened dialog choose your project directory, set Regular expression as se
 If you first click "Find All", you can review what changes you will make
 
 > Find what: ([\W+])[Cc]([A-Z]\w+)([\W+])
+> 
 > Replace with: $1$2$3
 
 
@@ -44,6 +46,7 @@ If you first click "Find All", you can review what changes you will make
 Repeat quite similarly for project files (*.csproj)
 
 > Find what: ([\W+])[Cc]([A-Z]\w+\.cs)([\W+])
+> 
 > Replace with: $1$2$3
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_prefixed_class.png "Replace file references in project files")
@@ -58,6 +61,7 @@ In the dialog I was using a regular expression to match files starting with "c" 
 In that regular expression if you specify a group in curly brackets, you can refer to it by it's number in the Replace with field.
    
 > Search for: [cC]([A-Z].*\.cs)
+> 
 > Replace with: $1
     
 You can also preview the changes to be sure you rename everything as you planned.
@@ -73,6 +77,7 @@ Notepad++ - Find in Files tool (Ctrl+Shift+F).
 File filters (*VM.cs)
    
 > Find what: ([\W+])([A-Z]\w+)VM([\W+])
+> 
 > Replace with: $1$2ViewModel$3
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_postfixed_class.png "Replace class names in source code")
@@ -80,6 +85,7 @@ File filters (*VM.cs)
 For project files (*.csproj)
 
 > Find what: ([\W+])([A-Z]\w+)VM(\.cs[\W+])
+> 
 > Replace with: $1$2ViewModel$3
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_postfixed_class.png "Replace file references in project files")
@@ -90,6 +96,7 @@ Total Commander - Find files tool (Ctrl+F) with *VM.cs filter - Feed to listbox
 Select all files and open Multi-Rename Tool (Ctrl+M)
    
 > Search for: (\.*)VM(\.cs)
+> 
 > Replace with: $1ViewModel$2
     
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_class.png "Rename files")
@@ -103,6 +110,7 @@ Notepad++ - Find in Files tool (Ctrl+Shift+F).
 File filters (*V.xaml *V.xaml.cs)
    
 > Find what: ([\W+])([A-Z]\w+)V([\W+])
+> 
 > Replace with: $1$2View$3
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step0_mass_rename_postfixed_wpf_control.png "Replace class names in source code")
@@ -110,6 +118,7 @@ File filters (*V.xaml *V.xaml.cs)
 For project files (*.csproj)
 
 > Find what: ([\W+])([A-Z]\w+)V(\.xaml\W+)
+> 
 > Replace with: $1$2View$3
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_postfixed_class.png "Replace file references in project files")
@@ -120,6 +129,7 @@ Total Commander - Find files tool (Ctrl+F) with *V.xaml* filter - Feed to listbo
 Select all files and open Multi-Rename Tool (Ctrl+M)
    
 > Search for: (\.*)V(\.xaml(\.cs)*)
+> 
 > Replace with: $1View$2
     
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_wpf_control.png "Rename files")   
