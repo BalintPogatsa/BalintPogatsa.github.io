@@ -29,8 +29,8 @@ I will describe 3 different cases:
   * Change postfix of class names (i.e. FirstVM.cs)
   * Change postfix of WPF controls (i.e. FirstV.xaml and FirstV.xaml.cs)
 
-# Removing prefix from class names
-- Renaming all occurences in code and references in project files 
+## Removing prefix from class names
+<span class="step">1</span>Renaming all occurences in code and references in project files 
    
 In Notepad++ press Ctrl+Shift+F to open Find in Files tool.
 In the opened dialog choose your project directory, set Regular expression as search mode, set file filters (c*.cs) and specify the regular expression.
@@ -52,7 +52,7 @@ Repeat quite similarly for project files (*.csproj).
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step1_mass_rename_prefixed_class.png "Replace file references in project files")
    
-- Renaming files
+<span class="step">2</span>Renaming files
    
 Use Find Files tool of Total Commander to list all the files that you need to rename and click "Feed to listbox" button:
 
@@ -70,7 +70,7 @@ You can also preview the changes to be sure you rename everything as you planned
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_prefixed_class.png "Rename files")
    
-# Change postfix of class names
+## Change postfix of class names
 The steps are pretty similar to removing prefixes so I will just show the steps you need.
 In my case I will search for "VM" postfix and replace it with "ViewModel".
 
@@ -104,7 +104,7 @@ Then select all files and open Multi-Rename Tool (Ctrl+M).
     
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_postfixed_class.png "Rename files")
    
-# Change postfix of WPF controls
+## Change postfix of WPF controls
 In this case I will search for "V" postfix and replace it with "View"
 
 - Renaming all occurences in code and references in project files 
