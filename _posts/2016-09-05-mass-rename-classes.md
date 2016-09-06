@@ -34,9 +34,9 @@ I will describe 3 different cases:
 In the opened dialog choose your project directory, choose "Regular expression" as search mode, set file filters to "c*.cs" and specify your RegExp.
 If you first click "Find All", you can review what changes you will make.
 
-
     Find what: ([\W+])[Cc]([A-Z]\w+)([\W+])
     
+	// Here you refer to the groups from the RegExp which were specified inside curly brackets.
     Replace with: $1$2$3
 
 
@@ -56,13 +56,10 @@ If you first click "Find All", you can review what changes you will make.
    
 Select all files and open Multi-Rename Tool (Ctrl+M).
 In the dialog I was using a regular expression to match files starting with "c" or "C" and the rest of the filename beginning with a capital letter.
-If you specify a group in that regular expression in curly brackets, you can refer to it by it's number in the "Replace with" field.
 
     Search for: [cC]([A-Z].*\.cs)
     
     Replace with: $1
-    
-You can also preview the changes to be sure you rename everything as you planned:
 
 ![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/step3_mass_rename_prefixed_class.png "Rename files")
    
