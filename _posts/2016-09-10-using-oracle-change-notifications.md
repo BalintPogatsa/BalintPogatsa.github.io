@@ -12,7 +12,6 @@ Here I would like to summarize my experiences about it:
 2. If you really want to use it, the reasons against:
   * It's antipattern (this should be enough reason against it, a DB is just not for this purpose)
   * It's not reliable:
-
          If the connection is broken between your application and the database, your subscription will be removed by the DB. You can say that you check if the connection is broken and on reconnect you subscribe again. That's fine, until the connection gets broken in both directions. However if your application can reach the DB, but for some network issues the DB cannot connect to your application, Oracle just removes your subscription. 
 
          You can still work around this by implementing some kind of watchdog functionality by subscribing to a dummy table and inserting values periodically, or querying the DB table USER_CHANGE_NOTIFICATION_REGS to see if your subscriptions are still valid.
