@@ -16,7 +16,7 @@ Here I would like to summarize my experiences about it:
 
          You can still work around this by implementing some kind of watchdog functionality by subscribing to a dummy table and inserting values periodically, or querying the DB table USER_CHANGE_NOTIFICATION_REGS to see if your subscriptions are still valid.
 
-3. So what should be the solution? If think you should move the notification logic to the application level. This is possible if you can implement a service which can be the only place where your DB table gets updated. In that case you can also trigger all events after your changes. Otherwise you are left with the workarounds to make this Database Change Notification feature reliable.
+3. So what should be the solution? I think you should move the notification logic to the application level. This is possible if you can implement a service which can be the only place where your DB table gets updated. In that case you can also trigger all events after your changes. Otherwise you are left with the workarounds to make this Database Change Notification feature reliable or implement a polling logic.
 
 Note: These kind of issues about unreliable network connection are tipically difficult to reproduce. I've managed to do it with the help of a small application called [https://jagt.github.io/clumsy/](https://jagt.github.io/clumsy/ "clumsy"), which can simulate several network issues.
 
