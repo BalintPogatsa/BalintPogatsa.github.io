@@ -6,6 +6,8 @@ date: 2016-09-10
 
 Recently I've had the pleasure to work on a project which was using Oracle's [Database Change Notifications](https://docs.oracle.com/cd/B28359_01/win.111/b28375/featChange.htm "Database Change Notification") technology to subscribe to database events (like INSERT, UPDATE, DELETE) from a C# application.
 
+![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/database_notification.png "Database notifications")
+
 Here I would like to summarize my experiences about it:
 
 1. Don't use it.
