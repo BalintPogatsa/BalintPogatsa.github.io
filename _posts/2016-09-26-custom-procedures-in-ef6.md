@@ -11,8 +11,8 @@ There is a 3rd party library called [CodeFirstStoreFunctions](https://codefirstf
 In my situation I wanted to fine-tune a Linq to Entities query to improve the performance:
 
         measurement = context.Measurements
-		  .Where(m => m.MeasuredAt == Functions.ToDateLocal("2016.01.01 10:00:00", "YYYY.MM.DD Hh24:MI:SS"))
-		  .FirstOrDefault();
+		.Where(m => m.MeasuredAt == Functions.ToDateLocal("2016.01.01 10:00:00", "YYYY.MM.DD Hh24:MI:SS"))
+		.FirstOrDefault();
 
 The ToDateLocal function is a function implemented in the database (in my case in Oracle XE).
 The reason for using it is that my table has the Oracle DATE type, but Entity Framework converts the .NET DateTime type to TIMESTAMP, which means that the performance can be much worse.
