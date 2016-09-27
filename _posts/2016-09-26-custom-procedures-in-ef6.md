@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Custom procedures in Entity Framework 6
+title: Custom procedures in Entity Framework 6.1
 date: 2016-09-26
 ---
 
@@ -10,15 +10,15 @@ There is a 3rd party library called [CodeFirstStoreFunctions](https://codefirstf
 
 In my situation I wanted to fine-tune a Linq to Entities query to improve the performance:
 
-                measurement = context.Measurements
-				   .Where(m => m.MeasuredAt == Functions.ToDateLocal("2016.01.01 10:00:00", "YYYY.MM.DD Hh24:MI:SS"))
-				   .FirstOrDefault();
+        measurement = context.Measurements
+		  .Where(m => m.MeasuredAt == Functions.ToDateLocal("2016.01.01 10:00:00", "YYYY.MM.DD Hh24:MI:SS"))
+		  .FirstOrDefault();
 
 The ToDateLocal function is a function implemented in the database (in my case in Oracle XE).
 The reason for using it is that my table has the Oracle DATE type, but Entity Framework converts the .NET DateTime type to TIMESTAMP, which means that the performance can be much worse.
 
+In the database I've specified the TO_DATE_LOCAL function (for some reason if you use Oracle it only works if you specify the function names and the schema with capital letters).
 With the CodeFirstStoreFunctions library I can extend the Linq to Entities query in the following way:
-(In the database I've specified the TO_DATE_LOCAL function - for some reason if you use Oracle it only works if you specify the function names and the schema with capital letters)
 
         [DbFunction("CodeFirstDatabaseSchema", "TO_DATE_LOCAL")]
         public static DateTime ToDateLocal(string dateTimeToConvert, string convertFormat)
@@ -27,8 +27,9 @@ With the CodeFirstStoreFunctions library I can extend the Linq to Entities query
             throw new NotSupportedException();
         }
 		
-Sometimes you just want to use some built-in procedures of your database which is not accessible directly from Linq. At the moment the CodeFirstStoreFunctions library doesn't support them, but I've added it using an extra attribute.
+Sometimes you just want to use some built-in procedures of your database which is not accessible directly from Linq. At the moment the CodeFirstStoreFunctions library doesn't support them, but I've added the missing functionality.
 You can find the sources of this addition in [my fork](https://codefirstfunctions.codeplex.com/SourceControl/network/forks/BalintPogatsa/BuiltInFunctions "my fork").
+The way how to refer to the built-in function is to add the DbFunctionDetails attribute and set the IsBuiltIn property.
 
 The way how to use it:
 
