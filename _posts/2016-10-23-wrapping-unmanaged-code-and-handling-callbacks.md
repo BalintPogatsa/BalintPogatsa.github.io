@@ -25,7 +25,11 @@ It's not very straightforward to resolve this problem, but there is already one 
 [described here](http://www.lenholgate.com/blog/2009/07/error-cannot-pass-a-gchandle-across-appdomains.html "GCHandle accross app domains")
 
 Another solution, which I explain here is to implement the managed logger as a [CrossAppDomainSingleton](http://www.ingebrigtsen.info/2007/05/18/cross-appdomain-singleton/ "CrossAppDomainSingleton"), which will direct the callback to the correct app domain.
-One way to see the problem with this kind of unmanaged-managed callback is to run some tests the [NUnit Gui](http://www.nunit.org/index.php?p=nunit-gui&r=2.2.10 "NUnit Gui"), 
+One way to reproduce the problem with this kind of unmanaged-managed callback is to run some tests with the [NUnit Gui](http://www.nunit.org/index.php?p=nunit-gui&r=2.2.10 "NUnit Gui"), 
 because the NUnit Gui has it's own default app domain, and loads the tests in a new one.
 
+![alt text](https://github.com/BalintPogatsa/BalintPogatsa.github.io/raw/master/img/CrossAppDomainManagedLogger_sequence.png "Unmanaged callback with singleton")
+
 You can find my test project in [this git repository](https://github.com/BalintPogatsa/CrossAppDomainManagedLogger "CrossAppDomainManagedLogger repository")
+
+If there are different kind of implementations of the callback interface, the CrossAppDomainManagedLogger can be extended to keep multiple instances with some kind of dictionary to decide which one to call in which moment.
