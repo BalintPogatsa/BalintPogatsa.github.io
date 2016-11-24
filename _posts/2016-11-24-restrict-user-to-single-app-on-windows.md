@@ -21,7 +21,11 @@ In my opinion a much better way to achieve this is to configure a specific Windo
  - the user gets logged out when the application closes
  
 Luckily this is not a complicated task at all.
-The task manager can be disabled, by setting one registry entry:
+The task manager can be disabled, by setting one registry entry (you can find an article, [how to edit registry entries of another user](http://www.ghacks.net/2008/03/12/windows-tip-edit-user-registry-of-other-users/ "how to edit registry entries of another user")):
+
+        HKEY_USERS\ HKEY_[name of the user]_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System
+        
+        Create DisableTaskMgr dword value under System key -> Set the value to 1
 
 One possible solution to disable the task bar and also make the application start on login is to replace the default shell application (explorer.exe) with your application.
 
@@ -29,6 +33,8 @@ So the only requirement left is to log out the user after the app closes. The be
  - starts the application
  - waits until it's execution is finished
  - logs off the user
+ 
+        'logoffAfterClosed.vbs
  
         set oShell=createobject("wscript.shell")
         sCmd=WScript.Arguments(0)
@@ -38,6 +44,8 @@ So the only requirement left is to log out the user after the app closes. The be
 
 If you set this script as the shell application, all of the mentioned requirements are set:
 
-
+        HKEY_USERS\ HKEY_[name of the user]_USER\Software\Microsoft\Windows NT\CurrentVersion\Winlogon
+        
+        c:\Windows\System32\wscript.exe d:\logoffAfterClosed.vbs d:\MyDesktopApp.exe
 
 I've tried this solution on Windows 7, but it should work on other Windows operating systems too.
