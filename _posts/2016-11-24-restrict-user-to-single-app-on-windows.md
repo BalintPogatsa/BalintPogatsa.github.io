@@ -15,6 +15,7 @@ One way to achieve this is to modify system settings from your application (like
 Which can be pretty tricky and the solution doesn't seem very robust.
 
 In my opinion a much better way to achieve this is to configure a specific Windows user account, where:
+
 - task manager is disabled
 - task bar is disabled
 - the application starts up when the user logs in
@@ -30,6 +31,7 @@ The task manager can be disabled, by setting one registry entry (you can find an
 One possible solution to disable the task bar and also make the application start on login is to replace the default shell application (explorer.exe) with your application.
 
 So the only requirement left is to log out the user after the app closes. The best way I've found for this is to use a small vbs script, which
+
 - starts the application
 - waits until it's execution is finished
 - logs off the user
