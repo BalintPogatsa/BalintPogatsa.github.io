@@ -8,7 +8,7 @@ date: 2016-11-27
 It's most used feature is to check the values of properties of WPF controls.
 
 You just start your application and Snoop, you drag the second crosshair over the window of your application, 
-you move your cursor over the control you want to snoop, you press CTRL + SHIFT and viol·.
+you move your cursor over the control you want to snoop, you press CTRL + SHIFT and viol√°.
 
 You see the visual tree of your application and the dependency properties of the selected control.
 You can also modify their values and see the immediate effect.
