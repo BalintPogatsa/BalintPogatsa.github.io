@@ -1,0 +1,24 @@
+---
+layout: default
+title: Development &amp; Design
+---
+	<h1>About</h1>
+	<ul class="posts">
+
+	  {% for post in site.posts %}
+	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% endfor %}
+	</ul>
+	
+<div class="blurb">
+	<h1>About</h1>
+
+	<p>&nbsp;</p>
+	<p>Dear Reader,</p>
+	
+	<p>I've started this blog partly to be helpful by sharing my knowledge, partly to learn by doing and partly because I always liked the idea of writing a technical blog.</p>
+	
+	<p>I hope I will achieve the first and wish me luck for the other ones.</p>
+	
+	<p>Bálint</p>
+</div><!-- /.blurb -->
