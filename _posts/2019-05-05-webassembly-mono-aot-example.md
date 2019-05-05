@@ -17,9 +17,9 @@ The sources that I've used to configure this build:
  
 ### Install prerequisites
 
- - (Install WSL on Windows 10)[https://docs.microsoft.com/en-us/windows/wsl/install-win10]
- - (Install Ubuntu 18.04)[https://www.microsoft.com/en-ca/p/ubuntu/9nblggh4msv6]
- - (Install the latest stable Mono)[https://www.mono-project.com/download/stable/#download-lin-ubuntu]
+ - [Install WSL on Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+ - [Install Ubuntu 18.04](https://www.microsoft.com/en-ca/p/ubuntu/9nblggh4msv6)
+ - [Install the latest stable Mono](https://www.mono-project.com/download/stable/#download-lin-ubuntu)
  - Install python and msbuild
  
  ```
@@ -60,8 +60,64 @@ source ./emsdk_env.sh
 export EMSDK=/path/to/emsdk/
 ```
 
-- (Get Mono WebAssembly SDK)[https://github.com/mono/mono/blob/master/sdks/wasm/docs/getting-started/obtain-wasm-sdk.md] 
+- [Get Mono WebAssembly SDK](https://github.com/mono/mono/blob/master/sdks/wasm/docs/getting-started/obtain-wasm-sdk.md) 
 Download both artifact zip files, not only the one mentioned in this description
 
 - Set the WASM_SDK path to the path where you have unzipped the ```sdks/wasm/mono-wasm-###########.zip``` file
-- Copy the wasm-cross-release folder from the second zip contents to the path where you unzipped the first file.
+
+```
+export WASM_SDK=/path/to/wasm_sdk/
+```
+
+- Copy the wasm-cross-release and wasm-runtime-release folder from the second zip file inside the WASM_SDK path.
+
+### Create sample 
+
+1. Create a directory:
+
+    ```
+    mkdir my-app
+    cd my-app
+    ```
+
+1. Copy the sample code from the SDK. We'll assume that the $WASM_SDK variable points to it.
+
+    ```
+    cp $WASM_SDK/sample.html .
+    cp $WASM_SDK/sample.cs .
+    cp $WASM_SDK/dependency.cs .
+    cp $WASM_SDK/server.py .
+    cp $WASM_SDK/runtime.js .
+    ```
+
+1.  Compile sample
+
+    ```
+    csc /target:library -out:sample.dll /noconfig /nostdlib /r:$WASM_SDK/wasm-bcl/wasm/mscorlib.dll /r:$WASM_SDK/wasm-bcl/wasm/System.dll /r:$WASM_SDK/wasm-bcl/wasm/System.Core.dll /r:$WASM_SDK/wasm-bcl/wasm/Facades/netstandard.dll /r:$WASM_SDK/wasm-bcl/wasm/System.Net.Http.dll /r:$WASM_SDK/framework/WebAssembly.Bindings.dll /r:$WASM_SDK/framework/WebAssembly.Net.Http.dll dependency.cs sample.cs
+    ```
+
+1. Package the sample 
+
+    ```
+    mono $WASM_SDK/packager.exe --emscripten-sdkdir=$EMSDK --mono-sdkdir=$WASM_SDK -appdir=bin/aot-bindings-sample --builddir=obj/aot-bindings-sample --aot --template=runtime.js --link-mode=SdkOnly --asset=./sample.html --asset=./server.py  sample.dll
+    ```
+
+1. Build using ninja
+
+    ```
+    ninja -v -C obj/aot-bindings-sample
+    ```
+
+### Serving sample
+
+To test the application launch the provided webserver:
+
+```
+
+cd bin/aot-bindings-sample
+python server.py
+
+```
+
+After executing you will see the port displayed (default: 8000):
+From a browser go to `http://localhost:8000/sample.html` or `http://127.0.0.1:8000/sample.html` depending on the browser (change the port number if needed)
